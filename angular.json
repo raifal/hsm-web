@@ -1,0 +1,35 @@
+{
+  "$schema": "https://angular.io/config/angular.json",
+  "version": 1,
+  "projects": {
+    "hsm-web": {
+      "projectType": "application",
+      "root": "",
+      "sourceRoot": "src",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/hsm-web",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.css"]
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "hsm-web:build"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "hsm-web",
+  "cli": {
+    "analytics": "7ae17ff3-c8e6-4762-87d3-4ae260da7fd8"
+  }
+}
