@@ -17,6 +17,19 @@ body {
   margin: 0 auto;
 }
 
+/* Ensure sensor multi-select shows all options and no scrollbar */
+.sensor-list {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 6px;
+  padding: 6px;
+  border: 1px solid #ddd;
+  overflow: visible; /* allow full visibility */
+}
+
+.sensor-list div { padding: 4px 2px }
+.sensor-list label { cursor: pointer }
+
 /* Geschwungene Überschrift */
 .container h1 {
   font-family: 'Dancing Script', cursive;

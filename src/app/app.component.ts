@@ -26,6 +26,20 @@ export class AppComponent {
     });
   }
 
+  toggleSensor(id: string, checked: boolean): void {
+    if (checked) {
+      if (!this.selectedSensors.includes(id)) {
+        this.selectedSensors = [...this.selectedSensors, id];
+      }
+    } else {
+      this.selectedSensors = this.selectedSensors.filter(s => s !== id);
+    }
+  }
+
+  isSensorSelected(id: string): boolean {
+    return this.selectedSensors.includes(id);
+  }
+
   toDateInputValue(date: Date): string {
     const tzOffset = date.getTimezoneOffset() * 60000;
     const localISO = new Date(date.getTime() - tzOffset).toISOString().slice(0, 10);
