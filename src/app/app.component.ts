@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SensorService, Sensor } from './sensor.service';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +10,20 @@ export class AppComponent {
 
   selectedDate: string;
   today: string;
+  sensors: Sensor[] = [];
+  selectedSensors: string[] = [];
 
-  constructor() {
+  constructor(private sensorService: SensorService) {
     const today = new Date();
     this.selectedDate = this.toDateInputValue(today);
     this.today = this.toDateInputValue(today);
+
+    this.sensorService.getSensors().subscribe(list => {
+      this.sensors = list;
+      if (list.length) {
+        this.selectedSensors = [list[0].id];
+      }
+    });
   }
 
   toDateInputValue(date: Date): string {

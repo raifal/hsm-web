@@ -7,5 +7,12 @@
     <div style="margin-left:auto;font-size:0.9rem;color:#666;">Ausgewählt: {{selectedDate}}</div>
   </div>
 
-  <app-temperature-chart [selectedDate]="selectedDate"></app-temperature-chart>
+  <div style="margin-bottom:12px;">
+    <label for="sensors">Sensoren auswählen:</label>
+    <select id="sensors" multiple size="4" [(ngModel)]="selectedSensors">
+      <option *ngFor="let s of sensors" [value]="s.id">{{s.name}}</option>
+    </select>
+  </div>
+
+  <app-temperature-chart [selectedDate]="selectedDate" [selectedSensors]="selectedSensors" [sensors]="sensors"></app-temperature-chart>
 </div>
