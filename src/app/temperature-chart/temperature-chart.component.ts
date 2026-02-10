@@ -40,7 +40,7 @@ export class TemperatureChartComponent implements OnInit, OnChanges {
 
   @Input() selectedDate?: string;
   @Input() selectedSensors: string[] = [];
-  @Input() sensors: { id: string; name: string }[] = [];
+  @Input() sensors: { id: string; name: string; color?: string }[] = [];
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -69,7 +69,7 @@ export class TemperatureChartComponent implements OnInit, OnChanges {
           data: values,
           label: sensor ? sensor.name : `Sensor ${id}`,
           fill: false,
-          borderColor: this.pickColor(idx)
+          borderColor: sensor?.color ?? this.pickColor(idx)
         } as any;
       });
       setTimeout(() => this.chart?.update(), 0);
