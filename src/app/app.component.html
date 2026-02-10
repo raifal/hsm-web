@@ -1,4 +1,11 @@
 <div class="container">
   <h1>Temperaturverlauf (24h)</h1>
-  <app-temperature-chart></app-temperature-chart>
+  <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+    <button (click)="prevDay()">&larr; Tag zurück</button>
+    <input type="date" [max]="today" [(ngModel)]="selectedDate" />
+    <button (click)="nextDay()" [disabled]="isNextDisabled()">Tag vor &rarr;</button>
+    <div style="margin-left:auto;font-size:0.9rem;color:#666;">Ausgewählt: {{selectedDate}}</div>
+  </div>
+
+  <app-temperature-chart [selectedDate]="selectedDate"></app-temperature-chart>
 </div>
